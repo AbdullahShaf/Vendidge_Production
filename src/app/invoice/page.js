@@ -661,6 +661,7 @@ export default function InvoicePage({ darkMode }) {
                //     sroItemSerialNo: item.sroItemSerialNo || ""
              //   }))
             //};
+            console.log("Buyer Type:", invoiceForm.buyerType);
             const payload = (() => {
     switch (invoice.scenario_code) {
         case "SN001":
@@ -679,7 +680,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
                     productDescription: item.description,
@@ -718,7 +719,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
                     productDescription: item.description,
@@ -833,7 +834,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
                     productDescription: item.description,
@@ -872,7 +873,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
                     productDescription: item.description,
@@ -910,7 +911,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 sellerAddress: sessionStorage.getItem("sellerAddress") || "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 items: items.map(item => ({
                     hsCode: item.hsCode,
@@ -950,7 +951,7 @@ export default function InvoicePage({ darkMode }) {
                 sellerAddress: sessionStorage.getItem("sellerAddress") || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
                     productDescription: item.description,
@@ -989,7 +990,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
                     productDescription: item.description,
@@ -1028,7 +1029,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
                     productDescription: item.description,
@@ -1068,7 +1069,7 @@ export default function InvoicePage({ darkMode }) {
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 dataSource: "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
                     productDescription: item.description,
@@ -1107,7 +1108,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
                     productDescription: item.description,
@@ -1146,7 +1147,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
                     productDescription: item.description,
@@ -1185,7 +1186,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
                     productDescription: item.description,
@@ -1224,7 +1225,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 additional1: "",
                 additional2: "",
                 additional3: "",
@@ -1266,7 +1267,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
                     productDescription: item.description,
@@ -1305,7 +1306,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
                     productDescription: item.description,
@@ -1344,7 +1345,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
                     productDescription: item.description,
@@ -1382,7 +1383,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerProvince: invoice.buyerProvince,
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 scenarioId: invoice.scenario_code,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
@@ -1420,7 +1421,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerBusinessName: invoice.customer_name,
                 buyerProvince: invoice.buyerProvince,
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
                 items: items.map(item => ({
@@ -1460,7 +1461,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerProvince: invoice.buyerProvince,
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 scenarioId: invoice.scenario_code,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
@@ -1498,7 +1499,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerBusinessName: invoice.customer_name,
                 buyerProvince: invoice.buyerProvince,
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 scenarioId: invoice.scenario_code,
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 items: items.map(item => ({
@@ -1537,7 +1538,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerBusinessName: invoice.customer_name,
                 buyerProvince: invoice.buyerProvince,
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 scenarioId: invoice.scenario_code,
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 items: items.map(item => ({
@@ -1576,7 +1577,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerBusinessName: invoice.customer_name,
                 buyerProvince: invoice.buyerProvince,
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
                 items: items.map(item => ({
@@ -1615,7 +1616,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerBusinessName: invoice.customer_name,
                 buyerProvince: invoice.buyerProvince,
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
                 items: items.map(item => ({
@@ -1654,7 +1655,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerBusinessName: invoice.customer_name,
                 buyerProvince: invoice.buyerProvince,
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
                 items: items.map(item => ({
@@ -1693,7 +1694,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerBusinessName: invoice.customer_name,
                 buyerProvince: invoice.buyerProvince,
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
                 items: items.map(item => ({
@@ -1733,7 +1734,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerProvince: invoice.buyerProvince,
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 scenarioId: invoice.scenario_code,
                 items: items.map(item => ({
                     hsCode: item.hsCode,
@@ -1771,7 +1772,7 @@ export default function InvoicePage({ darkMode }) {
                 buyerBusinessName: invoice.customer_name,
                 buyerProvince: invoice.buyerProvince,
                 buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoiceForm.buyerType,
+                buyerRegistrationType: invoice.buyerType,
                 invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
                 scenarioId: invoice.scenario_code,
                 items: items.map(item => ({
@@ -1950,7 +1951,7 @@ export default function InvoicePage({ darkMode }) {
                 sellerProvinceId: inv.sellerProvinceId || prev.sellerProvinceId,
                 saleType: inv.saleType || prev.saleType,
                 //registrationNo: inv.registrationNo || prev.registrationNo,
-                buyerType: inv.buyerType || prev.buyerType,
+                buyerType: inv.buyerType,
                 // Ensure FBR reference is loaded from whichever column name is present
                 fbrInvoiceRefNo: inv.fbrInvoiceRefNo ?? '',
             }));
