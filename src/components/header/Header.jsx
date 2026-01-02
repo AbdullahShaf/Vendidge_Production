@@ -28,13 +28,7 @@ export default function Header({ darkMode, setDarkMode, setSidebarOpen }) {
         </div>
 
         <div className="flex items-center gap-4">
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className={`p-2 rounded-lg transition ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'
-              }`}
-          >
-            {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
+         
 
           <div className="relative cursor-pointer">
             <div

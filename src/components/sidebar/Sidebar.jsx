@@ -48,7 +48,7 @@ export default function Sidebar({ darkMode, sidebarCollapsed, setSidebarCollapse
                                 alt="Logo"
                                 width={521}
                                 height={421}
-                                className="w-20 h-10 lg:w-20 lg:h-10 object-contain"
+                                className="w-20 h-10 lg:w-225 lg:h-13 object-contain"
                             />
                         </Link>
                     </div>
