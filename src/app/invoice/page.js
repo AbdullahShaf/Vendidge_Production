@@ -622,1169 +622,1169 @@ export default function InvoicePage({ darkMode }) {
             //     console.warn("Buyer registration check failed:", regErr);
 
             // }
-//const payload = {
-                
- //               invoiceType: invoice.saleType,
-                //invoiceDate: new Date(invoice.invoice_date)
-              //      .toISOString()
+            //const payload = {
+
+            //               invoiceType: invoice.saleType,
+            //invoiceDate: new Date(invoice.invoice_date)
+            //      .toISOString()
             //        .split("T")[0],
-          //      sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-        //        sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-      //          sellerProvince: invoice.sellerProvince,
-    //            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-  //              buyerNTNCNIC: invoice.ntn_cnic,
-//                buyerBusinessName: invoice.customer_name,
-               // buyerProvince: invoice.buyerProvince,
-             //   buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-           //     buyerRegistrationType: invoiceForm.buyerType,
-         //       invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-       //         scenarioId: invoice.scenario_code,
-     //           items: items.map(item => ({
-   //                 hsCode: item.hsCode,
-  //                  productDescription: item.description,
-   //                 rate: item.rateDesc,
-//                    uoM: item.unit,
-                    //quantity: Number(item.qty) || 0,
-                    //totalValues: Number(item.totalValues) || 0,
-                  //  valueSalesExcludingST: Number(item.valueSalesExcludingST) || 0,
-                //    fixedNotifiedValueOrRetailPrice:
-              //          Number(item.fixedNotifiedValueOrRetailPrice) || 0,
+            //      sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+            //        sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+            //          sellerProvince: invoice.sellerProvince,
+            //            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+            //              buyerNTNCNIC: invoice.ntn_cnic,
+            //                buyerBusinessName: invoice.customer_name,
+            // buyerProvince: invoice.buyerProvince,
+            //   buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+            //     buyerRegistrationType: invoiceForm.buyerType,
+            //       invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+            //         scenarioId: invoice.scenario_code,
+            //           items: items.map(item => ({
+            //                 hsCode: item.hsCode,
+            //                  productDescription: item.description,
+            //                 rate: item.rateDesc,
+            //                    uoM: item.unit,
+            //quantity: Number(item.qty) || 0,
+            //totalValues: Number(item.totalValues) || 0,
+            //  valueSalesExcludingST: Number(item.valueSalesExcludingST) || 0,
+            //    fixedNotifiedValueOrRetailPrice:
+            //          Number(item.fixedNotifiedValueOrRetailPrice) || 0,
             //        salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-          //          salesTaxWithheldAtSource:
-        //                Number(item.salesTaxWithheldAtSource) || 0,
-      //              extraTax: Number(item.extraTax) || "",
-    //                furtherTax: Number(item.furtherTax) || 0,
-  //                  sroScheduleNo: item.sroScheduleNo || "",
-//                    fedPayable: Number(item.fedPayable) || 0,
-                   // discount: Number(item.discount) || 0,
-                 //   saleType: item.TransactionType || "",
-               //     sroItemSerialNo: item.sroItemSerialNo || ""
-             //   }))
+            //          salesTaxWithheldAtSource:
+            //                Number(item.salesTaxWithheldAtSource) || 0,
+            //              extraTax: Number(item.extraTax) || "",
+            //                furtherTax: Number(item.furtherTax) || 0,
+            //                  sroScheduleNo: item.sroScheduleNo || "",
+            //                    fedPayable: Number(item.fedPayable) || 0,
+            // discount: Number(item.discount) || 0,
+            //   saleType: item.TransactionType || "",
+            //     sroItemSerialNo: item.sroItemSerialNo || ""
+            //   }))
             //};
             console.log("Buyer Type:", invoiceForm.buyerType);
             const payload = (() => {
-    switch (invoice.scenario_code) {
-        case "SN001":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || "",
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-        case "SN002":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || "",
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-            };
-            case "SN003":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-            };
-        case "SN004":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-            };
-            case "SN005":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || "",
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-            };
-            case "SN006":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || "",
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-            };
-            case "SN007":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0,
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-            };
-            case "SN008":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN009":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN010":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN011":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                dataSource: "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN012":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN013":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN014":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN015":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                additional1: "",
-                additional2: "",
-                additional3: "",
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN016":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN017":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN018":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                buyerRegistrationType: invoice.buyerType,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN019":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                buyerRegistrationType: invoice.buyerType,
-                scenarioId: invoice.scenario_code,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN020":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoice.buyerType,
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN021":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                buyerRegistrationType: invoice.buyerType,
-                scenarioId: invoice.scenario_code,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN022":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoice.buyerType,
-                scenarioId: invoice.scenario_code,
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN023":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoice.buyerType,
-                scenarioId: invoice.scenario_code,
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN024":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoice.buyerType,
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN025":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoice.buyerType,
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || "",
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN026":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoice.buyerType,
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-           case "SN027":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoice.buyerType,
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || 0,
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
-        case "SN027":
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date)
-                    .toISOString()
-                    .split("T")[0],
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                buyerRegistrationType: invoice.buyerType,
-                scenarioId: invoice.scenario_code,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty),
-                    totalValues: Number(item.totalValues),
-                    valueSalesExcludingST: Number(item.valueSalesExcludingST),
-                    fixedNotifiedValueOrRetailPrice:
-                        Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
-                    salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
-                    salesTaxWithheldAtSource:
-                       Number(item.salesTaxWithheldAtSource) || 0,
-                    extraTax: Number(item.extraTax) || "",
-                    furtherTax: Number(item.furtherTax) || 0,
-                    sroScheduleNo: item.sroScheduleNo || "",
-                    fedPayable: Number(item.fedPayable) || 0,
-                    discount: Number(item.discount) || 0,
-                    saleType: item.TransactionType || "",
-                    sroItemSerialNo: item.sroItemSerialNo || ""
-                }))
-           };
+                switch (invoice.scenario_code) {
+                    case "SN001":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || "",
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN002":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || "",
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN003":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN004":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN005":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || "",
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN006":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || "",
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN007":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0,
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN008":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN009":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN010":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN011":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            dataSource: "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN012":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN013":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN014":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN015":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            additional1: "",
+                            additional2: "",
+                            additional3: "",
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN016":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN017":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN018":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            buyerRegistrationType: invoice.buyerType,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN019":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            buyerRegistrationType: invoice.buyerType,
+                            scenarioId: invoice.scenario_code,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN020":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            buyerRegistrationType: invoice.buyerType,
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN021":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            buyerRegistrationType: invoice.buyerType,
+                            scenarioId: invoice.scenario_code,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN022":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            buyerRegistrationType: invoice.buyerType,
+                            scenarioId: invoice.scenario_code,
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN023":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            buyerRegistrationType: invoice.buyerType,
+                            scenarioId: invoice.scenario_code,
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN024":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            buyerRegistrationType: invoice.buyerType,
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN025":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            buyerRegistrationType: invoice.buyerType,
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || "",
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN026":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            buyerRegistrationType: invoice.buyerType,
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN027":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            buyerRegistrationType: invoice.buyerType,
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || 0,
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
+                    case "SN027":
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date)
+                                .toISOString()
+                                .split("T")[0],
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            buyerRegistrationType: invoice.buyerType,
+                            scenarioId: invoice.scenario_code,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty),
+                                totalValues: Number(item.totalValues),
+                                valueSalesExcludingST: Number(item.valueSalesExcludingST),
+                                fixedNotifiedValueOrRetailPrice:
+                                    Number(item.fixedNotifiedValueOrRetailPrice) || 0.00,
+                                salesTaxApplicable: Number(item.salesTaxApplicable) || 0,
+                                salesTaxWithheldAtSource:
+                                    Number(item.salesTaxWithheldAtSource) || 0,
+                                extraTax: Number(item.extraTax) || "",
+                                furtherTax: Number(item.furtherTax) || 0,
+                                sroScheduleNo: item.sroScheduleNo || "",
+                                fedPayable: Number(item.fedPayable) || 0,
+                                discount: Number(item.discount) || 0,
+                                saleType: item.TransactionType || "",
+                                sroItemSerialNo: item.sroItemSerialNo || ""
+                            }))
+                        };
 
-        // ================= DEFAULT =================
-        default:
-            return {
-                invoiceType: invoice.saleType,
-                invoiceDate: new Date(invoice.invoice_date).toISOString().split("T")[0],
-                sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
-                sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
-                sellerProvince: invoice.sellerProvince,
-                sellerAddress: sessionStorage.getItem("sellerAddress") || "",
-                buyerNTNCNIC: invoice.ntn_cnic,
-                buyerBusinessName: invoice.customer_name,
-                buyerProvince: invoice.buyerProvince,
-                buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
-                buyerRegistrationType: invoice.buyerType,
-                invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
-                scenarioId: invoice.scenario_code,
-                items: items.map(item => ({
-                    hsCode: item.hsCode,
-                    productDescription: item.description,
-                    rate: item.rateDesc,
-                    uoM: item.unit,
-                    quantity: Number(item.qty) || 0
-                }))
-            };
-    }
-})();
+                    // ================= DEFAULT =================
+                    default:
+                        return {
+                            invoiceType: invoice.saleType,
+                            invoiceDate: new Date(invoice.invoice_date).toISOString().split("T")[0],
+                            sellerNTNCNIC: sessionStorage.getItem("sellerNTNCNIC") || "",
+                            sellerBusinessName: sessionStorage.getItem("sellerBusinessName") || "",
+                            sellerProvince: invoice.sellerProvince,
+                            sellerAddress: sessionStorage.getItem("sellerAddress") || "",
+                            buyerNTNCNIC: invoice.ntn_cnic,
+                            buyerBusinessName: invoice.customer_name,
+                            buyerProvince: invoice.buyerProvince,
+                            buyerAddress: customers.find(c => c.id === invoice.customer_id)?.address || "",
+                            buyerRegistrationType: invoice.buyerType,
+                            invoiceRefNo: invoice.fbrInvoiceRefNo ?? "",
+                            scenarioId: invoice.scenario_code,
+                            items: items.map(item => ({
+                                hsCode: item.hsCode,
+                                productDescription: item.description,
+                                rate: item.rateDesc,
+                                uoM: item.unit,
+                                quantity: Number(item.qty) || 0
+                            }))
+                        };
+                }
+            })();
 
             const DemoPayload = {
                 "invoiceType": "Sale Invoice",
@@ -2331,18 +2331,25 @@ export default function InvoicePage({ darkMode }) {
             const scenarioCode = invoiceForm.scenarioCode || '';
             const tableRows = rows.map((r, index) => `
   <tr>
-    <td style="border:1px solid #000; padding:4px; text-align:center;">${index + 1}</td>
-    <td style="border:1px solid #000; padding:4px; text-align:center;">${r.qty || ''}</td>
-    <td style="border:1px solid #000; padding:4px; text-align:center;">${r.unit || ''}</td>
+    <td style="border:1px solid #000; padding:4px; text-align:center;">${r.hsCode || ''}</td>
     <td style="border:1px solid #000; padding:4px;">${r.description || ''}</td>
     <td style="border:1px solid #000; padding:4px; text-align:right;">${formatNumber(r.singleUnitPrice || 0)}</td>
-    <td style="border:1px solid #000; padding:4px; text-align:right;">${formatNumber(r.valueExclTax || r.valueSalesExcludingST || r.totalValues || 0)}</td>
-    <td style="border:1px solid #000; padding:4px; text-align:right;">${formatNumber(r.salesTaxApplicable || r.taxAmount || 0)}</td>
+    <td style="border:1px solid #000; padding:4px; text-align:center;">${r.discount || 0}</td>
+    <td style="border:1px solid #000; padding:4px; text-align:center;">${r.qty || ''}</td>
+    <td style="border:1px solid #000; padding:4px; text-align:right;">(${r.rate}%) ${formatNumber( r.valueSalesExcludingST || r.totalValues || 0)}</td>
+    <td style="border:1px solid #000; padding:4px; text-align:right;">${formatNumber(r.salesTaxApplicable || 0)}</td>
+    <td style="border:1px solid #000; padding:4px; text-align:right;">${formatNumber(r.furtherTax || 0)}</td>
+    <td style="border:1px solid #000; padding:4px; text-align:right;">${formatNumber(r.extraTax || 0)}</td>  
+    <td style="border:1px solid #000; padding:4px; text-align:right;">${formatNumber(r.salesTaxWithheldAtSource || 0)}</td>
     <td style="border:1px solid #000; padding:4px; text-align:right;">${formatNumber(r.totalValues || r.valueInclTax || 0)}</td>
   </tr>
 `).join('');
 
-
+            const totalDisc = rows.reduce((sum, r) => sum + Number(r.discount || 0), 0);
+            const totalQty = rows.reduce((sum, r) => sum + Number(r.qty || 0), 0);
+            const totalFurthurTax = rows.reduce((sum, r) => sum + Number(r.furtherTax || 0), 0);
+            const totalExtraTax = rows.reduce((sum, r) => sum + Number(r.extraTax || 0), 0);
+            const totalSalesTaxWithheldAtSource = rows.reduce((sum, r) => sum + Number(r.salesTaxWithheldAtSource || 0), 0);
             const totalExclTax = rows.reduce((sum, r) => sum + Number(r.valueSalesExcludingST || 0), 0);
             const totalTax = rows.reduce((sum, r) => sum + Number(r.salesTaxApplicable || 0), 0);
             const totalInclTax = totalExclTax + totalTax;
@@ -2426,22 +2433,30 @@ export default function InvoicePage({ darkMode }) {
   <table style="width:100%; border-collapse:collapse; font-size:11px; margin-bottom:12px; border:1px solid #000;">
     <thead style="background:#d9d9d9; font-weight:bold;">
       <tr>
-        <th style="border:1px solid #000; padding:5px; width:4%;">Sr.#</th>
-        <th style="border:1px solid #000; padding:5px; width:7%;">Qty</th>
-        <th style="border:1px solid #000; padding:5px; width:8%;">UOM</th>
-        <th style="border:1px solid #000; padding:5px; width:30%;">Description</th>
+        <th style="border:1px solid #000; padding:5px; width:8%;">HS Code</th>
+        <th style="border:1px solid #000; padding:5px; width:30%;">Desc</th>
         <th style="border:1px solid #000; padding:5px; width:11%;">Unit Rate</th>
+        <th style="border:1px solid #000; padding:5px; width:11%;">Discount</th>
+        <th style="border:1px solid #000; padding:5px; width:7%;">Qty</th>
         <th style="border:1px solid #000; padding:5px; width:13%;">Value Excl. Sales Tax</th>
         <th style="border:1px solid #000; padding:5px; width:13%;">Sales Tax Amount</th>
+        <th style="border:1px solid #000; padding:5px; width:13%;">Further Tax</th>
+        <th style="border:1px solid #000; padding:5px; width:13%;">Extra Tax</th>
+        <th style="border:1px solid #000; padding:5px; width:13%;">With Held Sales Tax</th>   
         <th style="border:1px solid #000; padding:5px; width:14%;">Value Incl. Sales Tax</th>
       </tr>
     </thead>
     <tbody>
       ${tableRows}
       <tr style="font-weight:bold; background:#f2f2f2;">
-        <td colspan="5" style="border:1px solid #000; padding:6px; text-align:right;">Total</td>
+        <td colspan="3" style="border:1px solid #000; padding:6px; text-align:right;">Total</td>
+        <td style="border:1px solid #000; padding:6px; text-align:right;">${formatNumber(totalDisc)}</td>
+        <td style="border:1px solid #000; padding:6px; text-align:right;">${formatNumber(totalQty)}</td>
         <td style="border:1px solid #000; padding:6px; text-align:right;">${formatNumber(totalExclTax)}</td>
-        <td style="border:1px solid #000; padding:6px; text-align:right;">${formatNumber(totalTax)}</td>
+        <td style="border:1px solid #000; padding:6px; text-align:right;">${formatNumber(totalExclTax)}</td>
+        <td style="border:1px solid #000; padding:6px; text-align:right;">${formatNumber(totalFurthurTax)}</td>
+        <td style="border:1px solid #000; padding:6px; text-align:right;">${formatNumber(totalExtraTax)}</td>
+        <td style="border:1px solid #000; padding:6px; text-align:right;">${formatNumber(totalSalesTaxWithheldAtSource)}</td>
         <td style="border:1px solid #000; padding:6px; text-align:right;">${formatNumber(totalInclTax)}</td>
       </tr>
     </tbody>
