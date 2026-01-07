@@ -375,19 +375,26 @@ export default function InvoicePage({ darkMode }) {
 
             if (rates.length === 0) {
                 handleInputChange(index, "rateOptions", []);
-                handleInputChange(index, "rate", "");
-                handleInputChange(index, "rateId", 0);
-                handleInputChange(index, "rateDesc", "");
+                // don't overwrite explicit values if user already set them
+                if (!rowOverride?.rate && !rows[index]?.rate) handleInputChange(index, "rate", "");
+                if (!rowOverride?.rateId && !rows[index]?.rateId) handleInputChange(index, "rateId", 0);
+                if (!rowOverride?.rateDesc && !rows[index]?.rateDesc) handleInputChange(index, "rateDesc", "");
             } else if (rates.length === 1) {
                 const r = rates[0];
                 const displayVal = r.ratE_VALUE ?? r.ratE_ID ?? r.ratE_DESC ?? "";
                 handleInputChange(index, "rateOptions", rates);
-                handleInputChange(index, "rate", String(displayVal));
-                handleInputChange(index, "rateId", r.ratE_ID ?? 0);
-                handleInputChange(index, "rateDesc", r.ratE_DESC ?? "");
 
-                // After we set the rate value, attempt to fetch SROs for this row
-                setTimeout(() => fetchSroScheduleOptions(index, { ...(rowOverride ?? rows[index]), rateId: r.ratE_ID }, date, provinceCode), 0);
+                // Only update rate fields if they differ from existing values to avoid clearing dependent SROs unnecessarily
+                const existingRateId = rowOverride?.rateId ?? rows[index]?.rateId ?? 0;
+                const existingRateVal = rowOverride?.rate ?? rows[index]?.rate ?? '';
+                if (Number(existingRateId) !== Number(r.ratE_ID) && String(existingRateVal) !== String(displayVal)) {
+                    handleInputChange(index, "rate", String(displayVal));
+                    handleInputChange(index, "rateId", r.ratE_ID ?? 0);
+                    handleInputChange(index, "rateDesc", r.ratE_DESC ?? "");
+
+                    // After we set the rate value, attempt to fetch SROs for this row
+                    setTimeout(() => fetchSroScheduleOptions(index, { ...(rowOverride ?? rows[index]), rateId: r.ratE_ID }, date, provinceCode), 0);
+                }
             } else {
                 handleInputChange(index, "rateOptions", rates);
 
@@ -397,15 +404,16 @@ export default function InvoicePage({ darkMode }) {
 
                 const matched = rates.find(o => String(o.ratE_ID) === String(existingRateId) || String(o.ratE_VALUE) === String(existingRateVal) || String(o.ratE_DESC) === String(existingRateVal));
                 if (matched) {
-                    handleInputChange(index, "rate", String(matched.ratE_VALUE ?? matched.ratE_ID ?? matched.ratE_DESC));
-                    handleInputChange(index, "rateId", matched.ratE_ID ?? 0);
-                    handleInputChange(index, "rateDesc", matched.ratE_DESC ?? "");
+                    // Only update if the matched value differs from what we have
+                    if (String(rows[index]?.rate) !== String(matched.ratE_VALUE ?? matched.ratE_ID ?? matched.ratE_DESC) || Number(rows[index]?.rateId || 0) !== Number(matched.ratE_ID || 0)) {
+                        handleInputChange(index, "rate", String(matched.ratE_VALUE ?? matched.ratE_ID ?? matched.ratE_DESC));
+                        handleInputChange(index, "rateId", matched.ratE_ID ?? 0);
+                        handleInputChange(index, "rateDesc", matched.ratE_DESC ?? "");
 
-                    setTimeout(() => fetchSroScheduleOptions(index, { ...(rowOverride ?? rows[index]), rateId: matched.ratE_ID }, date, provinceCode), 0);
+                        setTimeout(() => fetchSroScheduleOptions(index, { ...(rowOverride ?? rows[index]), rateId: matched.ratE_ID }, date, provinceCode), 0);
+                    }
                 } else {
-                    // handleInputChange(index, "rate", "");
-                    // handleInputChange(index, "rateId", 0);
-                    // handleInputChange(index, "rateDesc", "");
+                    // leave existing values untouched
                 }
             }
         } catch (err) {
@@ -419,6 +427,7 @@ export default function InvoicePage({ darkMode }) {
 
     useEffect(() => {
         // Re-fetch rates for all rows when date or seller province id changes
+        // NOTE: intentionally do NOT depend on rows.length so adding a new row doesn't trigger re-fetch for existing rows.
         if (!invoiceForm.date || !invoiceForm.sellerProvinceId) {
             console.log("Date or seller province id missing, skipping rate fetch", invoiceForm.date, invoiceForm.sellerProvinceId);
             return;
@@ -426,7 +435,7 @@ export default function InvoicePage({ darkMode }) {
         rows.forEach((r, idx) => {
             if (r && (r.TransactionTypeId || r.TransactionType)) fetchSalesTaxRate(idx);
         });
-    }, [invoiceForm.date, invoiceForm.sellerProvinceId, rows.length]);
+    }, [invoiceForm.date, invoiceForm.sellerProvinceId]);
 
     // Enhanced SRO fetch: prefers explicit rateId and sellerProvinceId when available
     const fetchSroScheduleOptions = async (index, rowOverride, dateOverride, provinceOverride) => {
@@ -1995,12 +2004,28 @@ export default function InvoicePage({ darkMode }) {
                         if (r.TransactionType || r.TransactionTypeId) {
                             fetchSalesTaxRate(idx, inv.sellerProvinceId ?? inv.sellerProvince ?? undefined, r, invDateStr).catch(err => console.warn('fetchSalesTaxRate error', err));
                         }
+
+                        // If we already have SRO IDs in edit mode, avoid making extra API calls — just populate option arrays so selects render the stored values
                         if (r.rate || r.rateId) {
-                            fetchSroScheduleOptions(idx, r, invDateStr, inv.sellerProvinceId ?? inv.sellerProvince ?? undefined).catch(err => console.warn('fetchSroScheduleOptions error', err));
-                        }
-                        if (r.sroScheduleId) {
-                            // populate SRO items for this schedule
-                            fetchSroItemOptions(idx, r, invDateStr).catch(err => console.warn('fetchSroItemOptions error', err));
+                            if (r.sroScheduleId) {
+                                // ensure there's at least one option so the select can show the value without calling API
+                                if (!r.sroOptions || r.sroOptions.length === 0) {
+                                    const opt = { sroScheduleNo: r.sroScheduleNo ?? String(r.sroScheduleId), sro_id: r.sroScheduleId };
+                                    setRowFieldsById(r.rowId, { sroOptions: [opt] });
+                                }
+                            } else {
+                                // only fetch schedules if we don't already have an id/option
+                                fetchSroScheduleOptions(idx, r, invDateStr, inv.sellerProvinceId ?? inv.sellerProvince ?? undefined).catch(err => console.warn('fetchSroScheduleOptions error', err));
+                            }
+
+                            // For SRO items: prefer existing options/ids, otherwise fetch
+                            if (r.sroScheduleId) {
+                                if (r.sroItemId && (!r.sroItemOptions || r.sroItemOptions.length === 0) && r.sroItemSerialNo) {
+                                    setRowFieldsById(r.rowId, { sroItemOptions: [{ srO_ITEM_ID: r.sroItemId, srO_ITEM_DESC: r.sroItemSerialNo }], sroItemId: String(r.sroItemId), sroItemSerialNo: r.sroItemSerialNo });
+                                } else if (!r.sroItemOptions || r.sroItemOptions.length === 0) {
+                                    fetchSroItemOptions(idx, r, invDateStr).catch(err => console.warn('fetchSroItemOptions error', err));
+                                }
+                            }
                         }
                     });
                 }, 0);
@@ -2336,7 +2361,7 @@ export default function InvoicePage({ darkMode }) {
     <td style="border:1px solid #000; padding:4px; text-align:right;">${formatNumber(r.singleUnitPrice || 0)}</td>
     <td style="border:1px solid #000; padding:4px; text-align:center;">${r.discount || 0}</td>
     <td style="border:1px solid #000; padding:4px; text-align:center;">${r.qty || ''}</td>
-    <td style="border:1px solid #000; padding:4px; text-align:right;">(${r.rate}%) ${formatNumber( r.valueSalesExcludingST || r.totalValues || 0)}</td>
+    <td style="border:1px solid #000; padding:4px; text-align:right;">${formatNumber( r.valueSalesExcludingST || r.totalValues || 0)}</td>
     <td style="border:1px solid #000; padding:4px; text-align:right;">${formatNumber(r.salesTaxApplicable || 0)}</td>
     <td style="border:1px solid #000; padding:4px; text-align:right;">${formatNumber(r.furtherTax || 0)}</td>
     <td style="border:1px solid #000; padding:4px; text-align:right;">${formatNumber(r.extraTax || 0)}</td>  

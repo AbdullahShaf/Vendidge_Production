@@ -14,7 +14,7 @@ export async function POST(request) {
 
             
         const fbrUrl =
-            "https://gw.fbr.gov.pk/di_data/v1/di/postinvoicedata"
+            "https://gw.fbr.gov.pk/di_data/v1/di/postinvoicedata_sb"
 
 
         const res = await fetch(fbrUrl, {
